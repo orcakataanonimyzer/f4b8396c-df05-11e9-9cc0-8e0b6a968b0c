@@ -12,7 +12,12 @@ const isUpperCase = char => {
   return /[A-Za]/g.test(char);
 };
 
+const isSharpened = pencil => {
+  return pencil.point !== pencil.maxPoint;
+};
+
 module.exports = {
+  isSharpened,
   isDull,
   isLowerCase,
   isUpperCase,
