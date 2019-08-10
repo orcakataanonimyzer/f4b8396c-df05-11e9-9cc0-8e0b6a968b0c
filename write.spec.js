@@ -24,6 +24,12 @@ describe("write()", () => {
       expect(pencil.point).toBe(40 - 18);
     });
 
+    test("write whitespaces does not cost pencil point", () => {
+      const whitespaces = "\n\t\r";
+      write(pencil, paper, whitespaces);
+      expect(pencil.point).toBe(40 - 18);
+    });
+
     test("appends text to the paper content", () => {
       write(pencil, paper, text);
       expect(paper.content).toBe(text + text);
@@ -33,6 +39,12 @@ describe("write()", () => {
       write(pencil, paper, text);
       write(pencil, paper, text);
       expect(pencil.point).toBe(0);
+    });
+
+    test("dull pencil can only write white space char", () => {
+      write(pencil, paper, text);
+      write(pencil, paper, text);
+      expect(paper.content).toBe(text + text + "Let                ");
     });
   });
 });
