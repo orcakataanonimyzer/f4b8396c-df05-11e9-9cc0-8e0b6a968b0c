@@ -1,4 +1,4 @@
-let write = (pencil, paper, text) => {};
+const { write } = require("./");
 let pencil = {};
 let paper = {};
 let text = "Let's start writing"; //costs 18 pencil point
@@ -21,7 +21,7 @@ describe("write()", () => {
     });
 
     test("degrades the pencil's point", () => {
-      expect(paper.point).toBe(100 - 18);
+      expect(pencil.point).toBe(40 - 18);
     });
 
     test("appends text to the paper content", () => {
