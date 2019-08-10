@@ -30,6 +30,4 @@ const write = (pencil, paper, text) => {
   paper.content += newContent;
 };
 
-module.exports = {
-  write
-};
+module.exports = write;
