@@ -20,7 +20,12 @@ const isOutOfLength = pencil => {
   return pencil.length === 0;
 };
 
+const isUsable = pencil => {
+  return pencil.length > 0;
+};
+
 module.exports = {
+  isUsable,
   isOutOfLength,
   isSharpened,
   isDull,
