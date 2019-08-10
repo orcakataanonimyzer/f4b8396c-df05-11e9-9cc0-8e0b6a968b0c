@@ -19,6 +19,15 @@ describe("sharpen()", () => {
     test("can't sharpen the pencil twice", () => {
       sharpen(pencil);
       expect(pencil.length).toBe(1);
+      expect(pencil.point).toBe(100);
+    });
+
+    test("can't sharpen when pencil's length is zero", () => {
+      pencil.point = 0;
+      pencil.length = 0;
+      sharpen(pencil);
+      expect(pencil.point).toBe(0);
+      expect(pencil.length).toBe(0);
     });
   });
 });

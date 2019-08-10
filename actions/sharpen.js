@@ -1,6 +1,6 @@
-const { isSharpened } = require("./booleans");
+const { isDull, isOutOfLength } = require("./booleans");
 module.exports = pencil => {
-  if (isSharpened(pencil)) {
+  if (isDull(pencil) && !isOutOfLength(pencil)) {
     pencil.point = pencil.maxPoint;
     pencil.length--;
   }

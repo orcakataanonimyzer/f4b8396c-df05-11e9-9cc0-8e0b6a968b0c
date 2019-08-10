@@ -13,10 +13,15 @@ const isUpperCase = char => {
 };
 
 const isSharpened = pencil => {
-  return pencil.point !== pencil.maxPoint;
+  return pencil.point > 0;
+};
+
+const isOutOfLength = pencil => {
+  return pencil.length === 0;
 };
 
 module.exports = {
+  isOutOfLength,
   isSharpened,
   isDull,
   isLowerCase,
