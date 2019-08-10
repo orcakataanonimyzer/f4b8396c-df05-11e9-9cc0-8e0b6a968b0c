@@ -1,4 +1,4 @@
-const { write } = require("./");
+const { write } = require("./write");
 let pencil = {};
 let paper = {};
 let text = "Let's start writing"; //costs 18 pencil point
