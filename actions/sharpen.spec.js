@@ -29,5 +29,12 @@ describe("sharpen()", () => {
       expect(pencil.point).toBe(0);
       expect(pencil.length).toBe(0);
     });
+
+    test("can't sharpen until the pencil is completely dull", () => {
+      pencil.point = 2;
+      sharpen(pencil);
+      expect(pencil.point).toBe(2);
+      expect(pencil.length).toBe(1);
+    });
   });
 });
