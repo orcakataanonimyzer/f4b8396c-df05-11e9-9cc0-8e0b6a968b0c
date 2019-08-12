@@ -77,4 +77,25 @@ describe("isSharpen", () => {
   });
 });
 
-describe("", () => {});
+describe("isDull", () => {
+  test("should return true when point is less than 0", () => {
+    const pencil = {
+      point: -1
+    };
+    expect(isDull(pencil)).toBeTruthy();
+  });
+
+  test("should return true when point is equal 0", () => {
+    const pencil = {
+      point: 0
+    };
+    expect(isDull(pencil)).toBeTruthy();
+  });
+
+  test("should return false when point is greater than 0", () => {
+    const pencil = {
+      point: 1
+    };
+    expect(isDull(pencil)).toBeFalsy();
+  });
+});

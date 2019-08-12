@@ -1,5 +1,5 @@
 const isDull = pencil => {
-  return !pencil.point;
+  return !pencil.point || pencil.point <= 0;
 };
 const isWhiteSpace = str => {
   return str.trim().length === 0;
