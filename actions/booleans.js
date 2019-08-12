@@ -17,7 +17,7 @@ const isSharpened = pencil => {
 };
 
 const isOutOfLength = pencil => {
-  return pencil.length === 0;
+  return pencil.length <= 0;
 };
 
 const isUsable = pencil => {
