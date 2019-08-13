@@ -8,6 +8,42 @@ const {
   isWhiteSpace
 } = require("./booleans");
 
+describe("isLowerCase", () => {
+  test("should return true when the string is lowercase", () => {
+    expect(isLowerCase("asda")).toBeTruthy();
+  });
+
+  test("should return false when the string contains an uppercase character", () => {
+    expect(isLowerCase("aSda")).toBeFalsy();
+  });
+
+  test("should return false when the string contains non-alphabet characters", () => {
+    expect(isLowerCase("fasd(fasd")).toBeFalsy();
+  });
+
+  test("should return false when the string contains numbers", () => {
+    expect(isLowerCase("fasd123fasd")).toBeFalsy();
+  });
+});
+
+describe("isUpperCase", () => {
+  test("should return true when the string is uppercase", () => {
+    expect(isUpperCase("ASDASD")).toBeTruthy();
+  });
+
+  test("should return false when the string contains an lowercase character", () => {
+    expect(isUpperCase("aSda")).toBeFalsy();
+  });
+
+  test("should return false when the string contains non-alphabet characters", () => {
+    expect(isUpperCase("fasd(fasd")).toBeFalsy();
+  });
+
+  test("should return false when the string contains numbers", () => {
+    expect(isUpperCase("fasd123fasd")).toBeFalsy();
+  });
+});
+
 describe("isUsable", () => {
   test("should return false when length is smaller than 0", () => {
     const pencil = {

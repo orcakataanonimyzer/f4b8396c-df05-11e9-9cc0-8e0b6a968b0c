@@ -5,11 +5,11 @@ const isWhiteSpace = str => {
   return str.trim().length === 0;
 };
 const isLowerCase = char => {
-  return /[a-z]/g.test(char);
+  return /^[a-z]+$/g.test(char);
 };
 
 const isUpperCase = char => {
-  return /[A-Za]/g.test(char);
+  return /^[A-Z]+$/g.test(char) && char.toUpperCase() === char;
 };
 
 const isSharpened = pencil => {
