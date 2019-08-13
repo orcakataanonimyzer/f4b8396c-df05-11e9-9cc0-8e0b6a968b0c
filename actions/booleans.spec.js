@@ -42,6 +42,10 @@ describe("isUpperCase", () => {
   test("should return false when the string contains numbers", () => {
     expect(isUpperCase("fasd123fasd")).toBeFalsy();
   });
+
+  test("should return false when the string contains numbers", () => {
+    expect(isUpperCase("fasd fasd")).toBeFalsy();
+  });
 });
 
 describe("isUsable", () => {

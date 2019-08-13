@@ -46,5 +46,20 @@ describe("write()", () => {
       write(pencil, paper, text);
       expect(paper.content).toBe(text + text + "Let                ");
     });
+
+    test("write lowercase string ", () => {
+      write(pencil, paper, ", ");
+      write(pencil, paper, "hello");
+      expect(paper.content).toBe(text + ", hello");
+      expect(pencil.point).toBe(16);
+    });
+
+    test("write lowercase string until dull", () => {
+      write(pencil, paper, text);
+      write(pencil, paper, ", ");
+      write(pencil, paper, "hello");
+      expect(paper.content).toBe(`${text}${text}, he   `);
+      expect(pencil.point).toBe(0);
+    });
   });
 });

@@ -11,6 +11,19 @@ const write = (pencil, paper, text) => {
     return;
   }
 
+  if (isLowerCase(text)) {
+    if (pencil.point - text.length >= 0) {
+      paper.content += text;
+      pencil.point -= text.length;
+      return;
+    } else {
+      const index = -1 * (pencil.point - text.length);
+      paper.content += text.substring(0, index);
+      text = text.slice(index);
+      pencil.point = 0;
+    }
+  }
+
   let newContent = "";
   for (let i = 0; i < text.length; i++) {
     if (!isDull(pencil)) {
