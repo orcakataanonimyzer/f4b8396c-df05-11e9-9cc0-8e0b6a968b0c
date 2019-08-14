@@ -11,30 +11,40 @@ const write = (pencil, paper, text) => {
     return;
   }
 
-  if (isLowerCase(text)) {
-    if (pencil.point - text.length >= 0) {
-      paper.content += text;
-      pencil.point -= text.length;
-      return;
-    } else {
-      const index = -1 * (pencil.point - text.length);
-      paper.content += text.substring(0, index);
-      text = text.slice(index);
-      pencil.point = 0;
-    }
-  }
+  // if (isLowerCase(text) || isUpperCase(text)) {
+  //   const point = isLowerCase(text) ? 1 : 2;
+  //   if (pencil.point >= point * text.length) {
+  //     paper.content += text;
+  //     pencil.point -= point * text.length;
+  //     return;
+  //   } else {
+  //     const length = pencil.point / point;
+  //     // console.log(index);
+  //     paper.content += text.substr(0, length);
+  //     text = text.slice(length);
+  //     pencil.point = 0;
+  //   }
+  // }
 
   let newContent = "";
   for (let i = 0; i < text.length; i++) {
     if (!isDull(pencil)) {
-      newContent += text[i];
-      if (isLowerCase(text[i])) {
+      let currentChar = text[i];
+      if (isLowerCase(currentChar)) {
         pencil.point--;
-      } else if (isUpperCase(text[i])) {
-        pencil.point -= 2;
-      } else if (!isWhiteSpace(text[i])) {
+      } else if (isUpperCase(currentChar)) {
+        // console.log(text[i]);
+
+        if (pencil.point < 2) {
+          currentChar = "#";
+          pencil.point = 0;
+        } else {
+          pencil.point -= 2;
+        }
+      } else if (!isWhiteSpace(currentChar)) {
         pencil.point--;
       }
+      newContent += currentChar;
     } else {
       newContent += " ";
     }
