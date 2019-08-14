@@ -55,7 +55,7 @@ describe("write()", () => {
     });
 
     test("durability should still be one", () => {
-      expect(pencil.point).toBe(1);
+      expect(pencil.point).toBe(0);
     });
   });
 
