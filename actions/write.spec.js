@@ -112,4 +112,20 @@ describe("write()", () => {
       expect(pencil.point).toBe(0);
     });
   });
+
+  describe("write whitespace when pencil is dull", () => {
+    beforeEach(() => {
+      paper = { content: "" };
+      pencil.point = 0;
+      write(pencil, paper, "\n\t\r");
+    });
+
+    test("should write all whitespace char", () => {
+      expect(paper.content).toBe("\n\t\r");
+    });
+
+    test("the pencil is still dull", () => {
+      expect(pencil.point).toBe(0);
+    });
+  });
 });

@@ -2,6 +2,7 @@ const {
   isDull,
   isLetterLowerCase,
   isLetterUpperCase,
+  isUpperCase,
   isWhiteSpace
 } = require("./booleans");
 
