@@ -14,3 +14,8 @@ Once you have NodeJS installed and ready on your machine, you can go ahead with 
 4. Finally, you can type `npm test` to start testing the modules/classes with jest
 
 You should now be able to view the test results in the terminal.
+
+# Notes
+
+You may notice, I have created 2 `write()` methods, `write` and `writeFaster`.
+The purpose of `writeFaster` is to optimize writing strings that are thousands of characters long, and have repeated patterns such as all whitespace char, or all lowercase char, or all uppercase char. The process of running and testing this `write` method can be demanding so I decided to create 2 different `write` methods, and commented out the test file of `writeFaster`. Feel free to uncomment it out and run it if you would like.

@@ -38,7 +38,28 @@ const writtenChar = (pencil, str) => {
 };
 
 const write = (pencil, paper, text) => {
+  if (isLowerCase(text) || isUpperCase(text)) {
+    const pointPerLetter = isLowerCase(text) ? 1 : 2;
+    const pencilHasEnoughPoint = pencil.point >= pointPerLetter * text.length;
+    if (pencilHasEnoughPoint) {
+      paper.content += text;
+      pencil.point -= pointPerLetter * text.length;
+      return;
+    } else {
+      const length = pencil.point / pointPerLetter;
+      paper.content += text.substr(0, length);
+      text = text.slice(length);
+      // check if pencil can write a uppercase letter before going dull
+      if (pointPerLetter === 2 && pencil.point % 2 !== 0) {
+        paper.content += "#";
+        text = text.slice(1);
+      }
+      pencil.point = 0;
+    }
+  }
+
   let writtenContent = "";
+
   for (let i = 0; i < text.length; i++) {
     writtenContent += writtenChar(pencil, text[i]);
   }
@@ -46,3 +67,8 @@ const write = (pencil, paper, text) => {
 };
 
 module.exports = write;
+
+if (isWhiteSpace(text)) {
+  paper.content += text;
+  return;
+}
