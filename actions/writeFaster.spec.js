@@ -1,4 +1,14 @@
+// default test
+test("", () => {
+  expect(1).toBe(1);
+});
+
+// uncomment these tests to test the writeFaster's write method
+
 /*
+
+uncomment this code to test the write() of writeFaster
+
 const write = require("./writeFaster");
 let pencil = { point: 10000000 };
 let paper = { content: "" };
