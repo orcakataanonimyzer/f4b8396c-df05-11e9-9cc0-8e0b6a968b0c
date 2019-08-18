@@ -1,5 +1,7 @@
 const pointTable = require("./pointTable");
-
+const isOutOfUse = pencil => {
+  return !pencil.eraser;
+};
 const isLetterLowerCase = char => {
   return pointTable[char] === 1;
 };
@@ -35,6 +37,7 @@ const isUsable = pencil => {
 };
 
 module.exports = {
+  isOutOfUse,
   isUsable,
   isOutOfLength,
   isSharpened,

@@ -1,4 +1,10 @@
+const { isOutOfUse } = require("./booleans");
+
 module.exports = (pencil, paper, text) => {
+  if (isOutOfUse(pencil)) {
+    return;
+  }
+
   if (paper.content.length >= text.length) {
     const occurencePosition = paper.content.lastIndexOf(text);
     if (occurencePosition >= 0) {
