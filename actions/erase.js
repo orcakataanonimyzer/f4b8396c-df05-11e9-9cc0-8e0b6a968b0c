@@ -13,13 +13,14 @@ module.exports = (pencil, paper, text) => {
   if (occurenceIndex < 0) {
     return;
   }
-
+  let lastErased = 0;
   let erasedContent = text.split("");
   const lastIndex = text.length - 1;
   for (let i = lastIndex; i > -1; i--) {
     if (!isOutOfEraser(pencil)) {
       erasedContent[i] = " ";
       pencil.eraser--;
+      lastErased = i;
     } else {
       break;
     }
@@ -30,4 +31,5 @@ module.exports = (pencil, paper, text) => {
   const contentTail = content.slice(occurenceIndex + text.length);
 
   paper.content = contentHead + erasedContent + contentTail;
+  paper.lastErased = contentHead.length + lastErased;
 };

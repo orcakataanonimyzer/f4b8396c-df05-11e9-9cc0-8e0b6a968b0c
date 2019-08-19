@@ -17,6 +17,9 @@ describe("erase()", () => {
     test("degrades eraser durability", () => {
       expect(pencil.eraser).toBe(16);
     });
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(18);
+    });
   });
 
   describe("when eraser is nearly out-of-use", () => {
@@ -30,6 +33,10 @@ describe("erase()", () => {
     });
     test("degrades eraser durability", () => {
       expect(pencil.eraser).toBe(0);
+    });
+
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(19);
     });
   });
 
@@ -45,6 +52,10 @@ describe("erase()", () => {
     test("degrades eraser durability", () => {
       expect(pencil.eraser).toBe(0);
     });
+
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(15);
+    });
   });
 
   describe("erase text in the beginning of the paper", () => {
@@ -59,6 +70,10 @@ describe("erase()", () => {
     test("degrades eraser durability", () => {
       expect(pencil.eraser).toBe(1);
     });
+
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(0);
+    });
   });
 
   describe("paper's content contains multiple occurances", () => {
@@ -72,6 +87,10 @@ describe("erase()", () => {
     });
     test("degrades eraser durability", () => {
       expect(pencil.eraser).toBe(2);
+    });
+
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(22);
     });
   });
 
@@ -101,6 +120,10 @@ describe("erase()", () => {
     test("eraser durability remains the same", () => {
       expect(pencil.eraser).toBe(70);
     });
+
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(undefined);
+    });
   });
 
   describe("when the occurence's has more characters than paper's content", () => {
@@ -114,6 +137,10 @@ describe("erase()", () => {
     });
     test("eraser durability remains the same", () => {
       expect(pencil.eraser).toBe(70);
+    });
+
+    test("set paper's last erased index", () => {
+      expect(paper.lastErased).toBe(undefined);
     });
   });
 });

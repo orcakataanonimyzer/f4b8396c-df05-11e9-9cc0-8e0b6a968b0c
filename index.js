@@ -1,4 +1,5 @@
 const { write, erase, sharpen } = require("./actions");
+const { isDull, isOutOfLength } = require("./actions/booleans");
 
 module.exports = class PencilSimulator {
   constructor(length, maxPoint, eraser) {
@@ -29,15 +30,18 @@ module.exports = class PencilSimulator {
   }
 
   sharpen() {
-    if (this.point > 0) {
-      throw new Error(`pencil is not dull`);
+    if (!isDull(this)) {
+      return `pencil point needs not shaperning`;
     }
 
-    if (this.length <= 0) {
-      console.log("pencil reaches the end of its life");
+    if (isOutOfLength(this)) {
+      return `pencil is out of length`;
     }
+
     if (sharpen(this)) {
-      console.log(`Successfully Sharpened`);
+      return `successfully sharpened`;
     }
+
+    throw Error("sharpening failed");
   }
 };
