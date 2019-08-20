@@ -77,20 +77,45 @@ describe("PencilSimulator class", () => {
     });
   });
 
-  describe("write", () => {
-    let pencil = null;
-    let paper = null;
-    beforeEach(() => {
-      pencil = new PencilSimulator(10, 100, 10);
-      paper = { content: "" };
-      pencil.write(paper, "I am writing my first sentence");
-    });
+  test("simulate different pencil actions on the a single paper", () => {
+    const pencil = new PencilSimulator(10, 32, 10);
+    const paper = { content: "" };
+    pencil.write(paper, "I am writing my first sentence");
 
-    test("write the 1st sentence on the paper", () => {
-      expect(paper.content).toBe("I am writing my first sentence");
-    });
-    test("degrade point durability", () => {
-      expect(pencil.point).toBe(100 - 23);
-    });
+    expect(paper.content).toBe("I am writing my first sentence");
+    expect(pencil.point).toBe(32 - 26);
+
+    pencil.erase(paper, "first");
+
+    expect(paper.content).toBe("I am writing my       sentence");
+    expect(paper.lastErased).toBe(16);
+    expect(pencil.eraser).toBe(5);
+
+    expect(() => {
+      pencil.erase();
+    }).toThrowError();
+
+    pencil.edit(paper, "second");
+    expect(paper.content).toBe("I am writing my secondsentence");
+    expect(pencil.point).toBe(0);
+    expect(() => {
+      pencil.edit(paper, "second");
+    }).toThrowError();
+
+    pencil.sharpen();
+    expect(pencil.point).toBe(32);
+
+    pencil.erase(paper, "my");
+    expect(paper.content).toBe("I am writing    secondsentence");
+
+    expect(paper.lastErased).toBe(13);
+    expect(pencil.eraser).toBe(3);
+
+    pencil.edit(paper, "an awesome");
+    expect(paper.content).toBe("I am writing an @@@@@@@entence");
+    expect(pencil.point).toBe(32 - 9);
+
+    pencil.erase(paper, "writing");
+    expect(paper.content).toBe("I am writ    an @@@@@@@entence");
   });
 });

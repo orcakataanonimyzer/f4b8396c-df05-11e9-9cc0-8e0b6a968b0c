@@ -10,6 +10,7 @@ const edit = (pencil, paper, text) => {
         edittingContent[lastErased + i] = writtenChar(pencil, text[i]);
       } else {
         edittingContent[lastErased + i] = "@";
+        pencil.point--;
       }
     }
     paper.content = edittingContent.join("");
