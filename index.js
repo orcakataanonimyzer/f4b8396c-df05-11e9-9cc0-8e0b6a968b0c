@@ -1,10 +1,10 @@
 const { write, erase, sharpen } = require("./actions");
 const { isDull, isOutOfLength } = require("./booleans");
-
+const { PencilInitializationError } = require("./errors");
 module.exports = class PencilSimulator {
   constructor(length, maxPoint, eraser) {
-    if (isNaN(length) && length <= 0) {
-      throw new Error("pencil length must be a positive integer");
+    if (isNaN(length) || length <= 0) {
+      throw new PencilInitializationError("length must be a positive int");
     }
 
     if (isNaN(maxPoint) && maxPoint <= 0) {
