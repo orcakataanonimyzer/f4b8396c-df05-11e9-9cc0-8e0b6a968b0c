@@ -5,7 +5,7 @@ const {
   isUpperCase,
   isLowerCase,
   isWhiteSpace
-} = require("./booleans");
+} = require("../booleans");
 
 const writtenChar = (pencil, str) => {
   if (isWhiteSpace(str)) {

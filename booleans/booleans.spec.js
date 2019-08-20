@@ -6,7 +6,7 @@ const {
   isLowerCase,
   isUpperCase,
   isWhiteSpace
-} = require("./booleans");
+} = require(".");
 
 describe("isLowerCase", () => {
   test("should return true when the string is lowercase", () => {

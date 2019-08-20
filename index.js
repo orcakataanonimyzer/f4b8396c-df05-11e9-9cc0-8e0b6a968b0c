@@ -1,5 +1,5 @@
 const { write, erase, sharpen } = require("./actions");
-const { isDull, isOutOfLength } = require("./actions/booleans");
+const { isDull, isOutOfLength } = require("./booleans");
 
 module.exports = class PencilSimulator {
   constructor(length, maxPoint, eraser) {

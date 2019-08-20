@@ -1,4 +1,4 @@
-const pointTable = require("./pointTable");
+const pointTable = require("../actions/pointTable");
 const isOutOfEraser = pencil => {
   return !pencil.eraser;
 };

@@ -1,4 +1,4 @@
-const { isOutOfEraser } = require("./booleans");
+const { isOutOfEraser } = require("../booleans");
 module.exports = (pencil, paper, text) => {
   if (isOutOfEraser(pencil)) {
     return;
