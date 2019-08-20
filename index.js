@@ -7,12 +7,16 @@ module.exports = class PencilSimulator {
       throw new PencilInitializationError("length must be a positive int");
     }
 
-    if (isNaN(maxPoint) && maxPoint <= 0) {
-      throw new Error("pencil max point durability must me a positive integer");
+    if (isNaN(maxPoint) || maxPoint <= 0) {
+      throw new PencilInitializationError(
+        "max point durability must me a positive int"
+      );
     }
 
-    if (isNaN(eraser) && eraser <= 0) {
-      throw new Error("eraser durability must me a positive integer");
+    if (isNaN(eraser) || eraser <= 0) {
+      throw new PencilInitializationError(
+        "eraser durability must me a positive int"
+      );
     }
 
     this.length = length;
