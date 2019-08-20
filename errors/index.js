@@ -4,6 +4,20 @@ class PencilInitializationError extends Error {
   }
 }
 
+class PencilErasingError extends Error {
+  constructor() {
+    super();
+  }
+}
+
+class PencilEdittingError extends Error {
+  constructor() {
+    super();
+  }
+}
+
 module.exports = {
-  PencilInitializationError
+  PencilInitializationError,
+  PencilErasingError,
+  PencilEdittingError
 };

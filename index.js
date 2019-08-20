@@ -1,6 +1,6 @@
-const { write, erase, sharpen } = require("./actions");
-const { isDull, isOutOfLength } = require("./booleans");
-const { PencilInitializationError } = require("./errors");
+const { write, erase, sharpen, edit } = require("./actions");
+const { isDull, isOutOfLength, isOutOfEraser } = require("./booleans");
+const { PencilInitializationError, PencilErasingError } = require("./errors");
 module.exports = class PencilSimulator {
   constructor(length, maxPoint, eraser) {
     if (isNaN(length) || length <= 0) {
@@ -30,22 +30,22 @@ module.exports = class PencilSimulator {
   }
 
   erase(paper, text) {
+    if (paper.lastErased >= 0) {
+      throw new PencilErasingError(
+        "can't erase text consecutively on the same paper"
+      );
+    }
     erase(this, paper, text);
   }
 
   sharpen() {
-    if (!isDull(this)) {
-      return `pencil point needs not shaperning`;
-    }
+    sharpen(this);
+  }
 
-    if (isOutOfLength(this)) {
-      return `pencil is out of length`;
+  edit(paper, text) {
+    if (paper.lastErased === undefined) {
+      throw new PencilEdittingError("can't edit paper without erased text");
     }
-
-    if (sharpen(this)) {
-      return `successfully sharpened`;
-    }
-
-    throw Error("sharpening failed");
+    edit(this, paper, text);
   }
 };

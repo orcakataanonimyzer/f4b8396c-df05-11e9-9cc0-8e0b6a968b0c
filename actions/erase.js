@@ -1,17 +1,17 @@
 const { isOutOfEraser } = require("../booleans");
 module.exports = (pencil, paper, text) => {
   if (isOutOfEraser(pencil)) {
-    return;
+    return false;
   }
 
   const { content } = paper;
   if (content.length < text.length) {
-    return;
+    return false;
   }
 
   const occurenceIndex = content.lastIndexOf(text);
   if (occurenceIndex < 0) {
-    return;
+    return false;
   }
   let lastErased = 0;
   let erasedContent = text.split("");
@@ -32,4 +32,5 @@ module.exports = (pencil, paper, text) => {
 
   paper.content = contentHead + erasedContent + contentTail;
   paper.lastErased = contentHead.length + lastErased;
+  return true;
 };
